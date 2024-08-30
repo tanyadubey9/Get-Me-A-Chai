@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import Script from 'next/script'
+import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { fetchuser, fetchpayments, initiate } from '@/actions/useractions'
 import { useSearchParams } from 'next/navigation'
@@ -96,9 +97,9 @@ const PaymentPage = ({ username }) => {
             <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
             <div className="cover w-full relative flex flex-col items-center">
-                <img className='object-cover w-full h-72 md:h-80' src={currentUser.coverpic} alt="p" />
+                <Image width={100} height={100} className='object-cover w-full h-72 md:h-80' src={currentUser.coverpic} alt="p" />
                 <div className="profile absolute top-1/4 border-2 border-white overflow-hidden rounded-full md:size-36 size-28">
-                    <img className='rounded-full md:size-36 size-28 md:w-[150px] md:h-[150px] w-[110px] h-[110px] ' src={currentUser.profilepic} alt="cute" />
+                    <Image width={100} height={100} className='rounded-full md:size-36 size-28 md:w-[150px] md:h-[150px] w-[110px] h-[110px] ' src={currentUser.profilepic} alt="cute" />
                 </div>
                 <div className='text-center mb-5 md:mt-14 mt-16'>
                     <div className='my-3 md:text-3xl text-xl font-bold'>
@@ -114,7 +115,7 @@ const PaymentPage = ({ username }) => {
                             {payments.length == 0 && <li> No Payments Yet </li>}
                             {payments.map((p, i) => {
                                 return <li key={i} className=' flex items-start gap-2 my-2 p-1 hover:border hover:border-slate-700 rounded-lg hover:bg-slate-800'>
-                                    <img className='md:w-9 w-6 ' src="avatar.gif" alt="avatar" /> <span className='md:text-base text-sm'> {p.name} donated ₹{p.amount} with a message "{p.message}"</span></li>
+                                    <Image width={100} height={100} className='md:w-9 w-6 ' src="/avatar.gif" alt="avatar" /> <span className='md:text-base text-sm'> {p.name} donated ₹{p.amount} with a message "{p.message}"</span></li>
                             })}
                         </ul>
                     </div>

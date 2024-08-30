@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const About = () => {
     return (
@@ -12,7 +13,7 @@ const About = () => {
             <div className='lg:flex lg:flex-row lg:justify-around gap-3 mx-6 my-8'>
                 <div className='flex items-center justify-center w-3/4 lg:w-1/2'>
                     <div className='w-24'>
-                    <span><img src="/fans.gif" alt="fans" /></span>
+                    <span><Image src="/fans.gif" alt="fans" width={100} height={100} /></span>
                     </div>
                     <div>
                         <h2 className='md:text-xl font-bold my-2'>Fans Want to Collaborate </h2>
@@ -21,7 +22,7 @@ const About = () => {
                 </div>
                 <div className='flex items-center justify-center mt-5 lg:m-0'>
                     <div className='w-32'>
-                    <span> <img src="coin.gif" alt="coin" /></span>
+                    <span> <Image src="/coin.gif" alt="coin" width={100} height={100} /></span>
                     </div>
                     <div>
                         <h2 className='md:text-xl font-bold my-2'>Support Through Chai  </h2>
