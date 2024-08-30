@@ -1,9 +1,8 @@
 import NextAuth from 'next-auth'
-// import AppleProvider from 'next-auth/providers/apple'
-// import FacebookProvider from 'next-auth/providers/facebook'
-// import GoogleProvider from 'next-auth/providers/google'
+import GoogleProvider from 'next-auth/providers/google'
 // import EmailProvider from 'next-auth/providers/email'
 import GitHubProvider from "next-auth/providers/github";
+// import LinkedInProvider from 'next-auth/providers/linkedin';
 import mongoose from 'mongoose';
 import User from '@/models/User';
 import Payment from '@/models/Payment';
@@ -16,18 +15,15 @@ export const authoptions = NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
     }),
-    // AppleProvider({
-    //   clientId: process.env.APPLE_ID,
-    //   clientSecret: process.env.APPLE_SECRET
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET
+    }),
+    // LinkedInProvider({
+    //   clientId: process.env.LINKEDIN_ID,
+    //   clientSecret: process.env.LINKEDIN_SECRET, 
     // }),
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_ID,
-    //   clientSecret: process.env.FACEBOOK_SECRET
-    // }),
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID,
-    //   clientSecret: process.env.GOOGLE_SECRET
-    // }),
+    
     // // Passwordless / email sign in
     // EmailProvider({
     //   server: process.env.MAIL_SERVER,
@@ -36,13 +32,13 @@ export const authoptions = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      if (account.provider == 'github') {
+      if (account.provider == 'github' || account.provider === 'google') {
         await connectDB()
         // check if the user already exits in the database
         const currentUser = await User.findOne({ email: user.email })
         if (!currentUser) {
           // if the user does not exist, create a new user
-          const newUser = await User.create({
+          await User.create({
             email: user.email,
             username: user.email.split("@")[0],
           })
@@ -52,6 +48,7 @@ export const authoptions = NextAuth({
     },
 
     async session({ session, user, token }) {
+      await connectDB()
       const dbUser = await User.findOne({ email: session.user.email });
       // console.log(dbUser)
         session.user.name = dbUser.username;
