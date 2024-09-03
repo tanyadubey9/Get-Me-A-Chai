@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col justify-center items-center min-h-[70vh] text-white gap-8">
-        <h1 className="md:text-5xl text-3xl font-bold flex items-center justify-center gap-2 text-center">Get Me A Chai <span><Image src="/tea.gif" alt="tea" width={100} height={100} className="md:w-20 w-14" /></span></h1>
+        <h1 className="md:text-5xl text-3xl font-bold flex items-center justify-center gap-2 text-center">Get Me A Chai <span><Image src="/tea.gif" alt="tea" width={100} height={100} className="md:w-20 w-14" unoptimized /></span></h1>
         <p className="font-semibold md:text-lg text-center">A Crowdfunding platform for creaters. Get funded by your fans and followers. Start Now!</p>
         <div className="flex gap-1">  
           <Link href="/login">
@@ -24,21 +24,21 @@ export default function Home() {
         <div className="flex justify-around md:m-10 gap-3">
           <div className="flex flex-col justify-center items-center gap-3">
             <div>
-              <Image className="bg-gray-300 rounded-full p-3 md:w-28 w-16" src="/woman.gif" alt="woman"  width={100} height={100} />
+              <Image className="bg-gray-300 rounded-full p-3 md:w-28 w-16" src="/woman.gif" alt="woman"  width={100} height={100} unoptimized />
             </div>
             <h4 className="font-bold text-center"> Fund Yourself</h4>
             <p className="text-center">your fans are available to help you</p>
           </div>
           <div className="flex flex-col justify-center items-center gap-3">
             <div>
-              <Image className="bg-gray-300 rounded-full p-3 md:w-28 w-16" src="/coin.gif" alt="coin" width={100} height={100} />
+              <Image className="bg-gray-300 rounded-full p-3 md:w-28 w-16" src="/coin.gif" alt="coin" width={100} height={100} unoptimized />
             </div>
             <h4 className="font-bold text-center"> Fund Yourself</h4>
             <p className="text-center">your fans are available to help you</p>
           </div>
           <div className="flex flex-col justify-center items-center gap-3">
             <div>
-              <Image className="bg-gray-300 rounded-full p-3 md:w-28 w-16" src="/fans.gif" alt="fans" width={100} height={100} />
+              <Image className="bg-gray-300 rounded-full p-3 md:w-28 w-16" src="/fans.gif" alt="fans" width={100} height={100} unoptimized />
             </div>
             <h4 className="font-bold text-center">Fans wants to help</h4>
             <p className="text-center">your fans are available to help you</p>
