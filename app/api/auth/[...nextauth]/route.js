@@ -9,19 +9,6 @@
   import connectDB from '@/db/connectDB';
 
   export const authoptions = NextAuth({
-    cookies: {
-      sessionToken: {
-        name: `__Secure-next-auth.session-token`,
-        options: {
-          httpOnly: true,
-          sameSite: "lax",
-          path: "/",
-          secure: true,
-          domain: "https://get-me-a-chai-lkqc.onrender.com/", 
-        },
-      },
-    }, 
-
     providers: [
       // OAuth authentication providers...      
       GitHubProvider({
