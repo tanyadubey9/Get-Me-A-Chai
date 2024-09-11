@@ -14,12 +14,14 @@
       GitHubProvider({
         clientId: process.env.GITHUB_ID,
         clientSecret: process.env.GITHUB_SECRET,
-        redirectUri: `${process.env.NEXTAUTH_URL}/api/auth/callback/github`
+        redirectUri: `${process.env.NEXTAUTH_URL}/api/auth/callback/github`,
+        scope: "read:user user:email",
       }),
       GoogleProvider({
         clientId: process.env.GOOGLE_ID,
         clientSecret: process.env.GOOGLE_SECRET,
         redirectUri: `${process.env.NEXTAUTH_URL}/api/auth/callback/google`,
+        scope: "openid email profile",
       }),
       // LinkedInProvider({
       //   clientId: process.env.LINKEDIN_ID,
@@ -59,4 +61,4 @@
     }
   });
 
-  export { authoptions as GET, authoptions as POST }
+  export { authoptions as GET, authoptions as POST }  
